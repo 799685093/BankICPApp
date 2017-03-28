@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:descendantFocusability="blocksDescendants"
+    android:orientation="vertical">
+
+    <!-- 整体布局 ， 按住显示的背景色 -->
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <!-- 第一部分的头部，带图片 -->
+
+        <LinearLayout
+            android:id="@+id/context"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dip"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/head"
+                android:layout_width="50dip"
+                android:layout_height="50dip"
+                android:src="@mipmap/wait" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout"
+            android:layout_width="fill_parent"
+            android:layout_height="50dip"
+            android:layout_marginRight="10dip"
+            android:gravity="center_vertical">
+
+            <!-- 第一部分的标题 -->
+            <!-- 上传人 -->
+
+            <TextView
+                android:id="@+id/uploader"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dip"
+                android:gravity="left|center_vertical"
+                android:lines="1"
+                android:text="上传人"
+                android:textColor="@color/list_item_name"
+                android:textSize="14dip" />
+
+            <TextView
+                android:id="@+id/companyname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/uploader"
+                android:layout_below="@id/uploader"
+                android:gravity="left|center_vertical"
+                android:lines="1"
+                android:text="公司名"
+                android:textColor="@color/list_item_company"
+                android:textSize="14dip"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/departmentname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/uploader"
+                android:layout_toRightOf="@+id/companyname"
+                android:lines="1"
+                android:text="部门名"
+                android:textColor="@color/list_item_company"
+                android:textSize="14dip"
+                android:visibility="gone" />
+            <!-- 时间显示的文字 -->
+
+            <TextView
+                android:id="@+id/time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/uploader"
+                android:layout_marginLeft="10dip"
+                android:layout_toRightOf="@+id/departmentname"
+                android:lines="1"
+                android:text="09:58"
+                android:textColor="@color/list_item_company"
+                android:textSize="14sp" />
+
+            <ImageButton
+                android:id="@+id/del_img_btn"
+                android:layout_width="22dip"
+                android:layout_height="22dip"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:background="@drawable/btn_upload_delete_selector"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/choose_ic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dip"
+                android:layout_marginRight="10dip"
+                android:background="@mipmap/choose_ic"
+                android:visibility="gone" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- 显示标题 -->
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dip"
+            android:layout_marginLeft="10dip"
+            android:layout_marginRight="10dip"
+            android:text="标题"
+            android:textColor="@color/list_item_title"
+            android:textSize="14dip" />
+
+        <TextView
+            android:id="@+id/remark"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dip"
+            android:layout_marginLeft="10dip"
+            android:layout_marginRight="10dip"
+            android:text="内容"
+            android:textColor="@color/list_item_title"
+            android:textSize="14dip" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="1px"
+        android:background="@color/list_item_in_line"
+        android:orientation="horizontal" />
+
+    <LinearLayout
+        android:id="@+id/show_more_rly"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/list_item_ime_bg"
+        android:orientation="vertical">
+
+        <com.bankicp.app.view.MGridView
+            android:id="@+id/imageview"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dip"
+            android:layout_marginLeft="10dip"
+            android:layout_marginRight="80dip"
+            android:layout_marginTop="10dip"
+            android:horizontalSpacing="5dp"
+            android:listSelector="#00000000"
+            android:numColumns="2"
+            android:stretchMode="columnWidth"
+            android:verticalSpacing="5dp" />
+
+        <LinearLayout
+            android:id="@+id/item_more_view"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dip"
+            android:layout_marginLeft="10dip"
+            android:layout_marginRight="10dip"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dip"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="20dip"
+                    android:layout_height="20dip"
+                    android:src="@mipmap/projectname" />
+
+                <TextView
+                    android:id="@+id/specialty"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dip"
+                    android:gravity="center_vertical"
+                    android:text="专业"
+                    android:textColor="@color/activity_title_text" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dip"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="20dip"
+                    android:layout_height="20dip"
+                    android:src="@mipmap/specialty" />
+
+                <TextView
+                    android:id="@+id/projectname"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dip"
+                    android:text="项目"
+                    android:textColor="@color/activity_title_text" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="20dip"
+                    android:layout_height="20dip"
+                    android:src="@mipmap/client" />
+
+                <TextView
+                    android:id="@+id/client"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dip"
+                    android:text="客户"
+                    android:textColor="@color/activity_title_text" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="1px"
+            android:background="@color/list_item_in_line"
+            android:orientation="horizontal" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="35dip"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/spotadress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dip"
+                android:background="@mipmap/item_map" />
+
+            <TextView
+                android:id="@+id/comefrom"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_marginLeft="8dip"
+                android:gravity="center_vertical"
+                android:maxLines="2"
+                android:text="暂无地理位置"
+                android:textColor="@color/list_item_map_text"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="1px"
+            android:layout_height="fill_parent"
+            android:layout_margin="3dip"
+            android:background="@color/list_item_in_line"
+            android:orientation="horizontal"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:id="@+id/telephone"
+            android:layout_width="80dip"
+            android:layout_height="fill_parent"
+            android:background="@color/white"
+            android:gravity="center_vertical|right"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/call_btn_selector" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_marginLeft="8dip"
+                android:layout_marginRight="15dip"
+                android:gravity="center_vertical"
+                android:text="拨号"
+                android:textColor="@color/call_color_button"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="9dip"
+        android:background="@color/list_item_btm_line"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginTop="1px"
+            android:background="@color/white" />
+    </LinearLayout>
+
+</LinearLayout>

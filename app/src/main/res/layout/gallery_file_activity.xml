@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/gray"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/moretitlebar"
+        android:layout_width="fill_parent"
+        android:layout_height="44dip"
+        android:background="@mipmap/main_top_bg"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/header_close"
+            android:layout_width="60dip"
+            android:layout_height="fill_parent"
+            android:layout_alignParentRight="true"
+            android:background="@null"
+            android:gravity="center"
+            android:text="返回"
+            android:textColor="@color/color_button"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/record_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_margin="3dip"
+            android:background="@null"
+            android:gravity="center"
+            android:text="点击录音"
+            android:textColor="@color/record_button_color"
+            android:textSize="18sp"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:id="@+id/voice_del_lly"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_toRightOf="@id/record_btn"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="2dip"
+                android:layout_height="wrap_content"
+                android:background="@mipmap/record_btn_line" />
+
+            <Button
+                android:id="@+id/voice_del"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dip"
+                android:layout_weight="1"
+                android:background="@null"
+                android:drawablePadding="5dip"
+                android:gravity="center"
+                android:text="点击删除"
+                android:textColor="@color/color_button_del"
+                android:textSize="18sp"
+                android:visibility="visible" />
+
+            <Button
+                android:id="@+id/voice_file"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@mipmap/record_time_bg"
+                android:drawablePadding="5dip"
+                android:gravity="center"
+                android:text="00:00"
+                android:textColor="@color/white"
+                android:textSize="13sp"
+                android:visibility="visible" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/top_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:textColor="@color/darkgray"
+            android:visibility="visible" />
+    </RelativeLayout>
+
+    <ru.truba.touchgallery.GalleryWidget.GalleryViewPager
+        android:id="@+id/viewer"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/remark_lly"
+        android:layout_below="@id/moretitlebar" />
+
+    <LinearLayout
+        android:id="@+id/remark_lly"
+        android:layout_width="fill_parent"
+        android:layout_height="44dip"
+        android:layout_alignParentBottom="true"
+        android:background="@mipmap/tool_btm_bg"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dip"
+
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/btm_file_name"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:background="@mipmap/imge_name_bg"
+                android:gravity="left|center_vertical"
+                android:maxLines="2"
+                android:paddingLeft="5dip"
+                android:text="文件名："
+                android:textColor="@color/activity_title_text"
+                android:textSize="13sp"
+                android:visibility="visible" />
+
+            <Button
+                android:id="@+id/btm_remark_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="3dip"
+                android:background="@null"
+                android:gravity="center"
+                android:text="添加备注"
+                android:textColor="@color/color_button"
+                android:textSize="18sp"
+                android:visibility="visible" />
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

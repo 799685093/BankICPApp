@@ -1,0 +1,57 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <FrameLayout
+        android:id="@+id/upload_ablum_fm"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <RelativeLayout
+            android:id="@+id/upload_ablum_rl"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <ImageView
+                android:id="@+id/upload_ablum_choose"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_centerInParent="true"
+                android:adjustViewBounds="true"
+                android:background="@mipmap/wait"
+                android:scaleType="centerCrop" />
+
+            <TextView
+                android:id="@+id/upload_ablum_path"
+                android:layout_width="0dp"
+                android:layout_height="0dp" />
+
+            <TextView
+                android:id="@+id/upload_ablum_id"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:visibility="gone" />
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/btn_upload_ablum_choose"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@mipmap/btn_unchoose"
+            android:focusable="false"
+            android:tag="unchoosed" />
+
+        <TextView
+            android:id="@+id/upload_chooseablum_mark"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="invisible" />
+
+        <TextView
+            android:id="@+id/item_value"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:visibility="invisible" />
+    </FrameLayout>
+
+</RelativeLayout>

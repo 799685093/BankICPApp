@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/image_upload_rl"
+    android:layout_width="80dip"
+    android:layout_height="80dip">
+
+
+    <com.bankicp.library.ImageView.RoundedImageView
+        android:id="@+id/image_upload_im"
+        android:layout_width="60dip"
+        android:layout_height="60dip"
+        android:layout_centerHorizontal="true"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="12dp"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/wait"
+        app:border_color="@color/LightGray"
+        app:border_width="1dp"
+        app:corner_radius="7dp"
+        app:mutate_background="true"
+        app:oval="false" />
+
+    <ImageView
+        android:id="@+id/image_upload_btn"
+        android:layout_width="25dip"
+        android:layout_height="25dip"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:padding="5dp"
+        android:src="@mipmap/btn_image_delete_p" />
+
+    <TextView
+        android:id="@+id/image_upload_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/image_upload_im"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="3dp"
+        android:gravity="center"
+        android:lines="1"
+        android:text="1"
+        android:textColor="@color/FontColorBlack"
+        android:textSize="9sp" />
+
+    <TextView
+        android:id="@+id/image_upload_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@null"
+        android:visibility="gone" />
+
+</RelativeLayout>

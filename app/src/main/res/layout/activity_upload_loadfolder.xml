@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/upload_photo_check_fl"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/upload_folder_out_rl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <!-- 头部布局 -->
+        <RelativeLayout
+            android:id="@+id/upload_folder"
+            android:layout_width="fill_parent"
+            android:layout_height="44dip"
+            android:background="@mipmap/main_top_bg">
+
+            <Button
+                android:id="@+id/check_ablum_folder_cancel_btn"
+                android:layout_width="70dip"
+                android:layout_height="fill_parent"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:background="@null"
+                android:gravity="center"
+                android:text="取消"
+                android:textColor="@color/color_button"
+                android:textSize="18sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_below="@id/upload_folder"
+            android:background="#FFFFFF">
+
+            <GridView
+                android:id="@+id/upload_ablum_folder_check_gridview"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:columnWidth="180dp"
+                android:gravity="center"
+                android:horizontalSpacing="5dp"
+                android:numColumns="auto_fit"
+                android:scrollbars="none"
+                android:stretchMode="columnWidth"
+                android:verticalSpacing="5dp"></GridView>
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/upload_albums_out_rl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <!-- 头部布局 -->
+
+        <RelativeLayout
+            android:id="@+id/upload_albums"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/wb_bg_titlebar">
+
+            <Button
+                android:id="@+id/check_albums_back_btn"
+                android:layout_width="45sp"
+                android:layout_height="30sp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="8dp"
+                android:background="@drawable/post_action_back_selector"
+                android:contentDescription="@string/upload_add_ablum_header_button_back"
+                android:text="@string/upload_add_ablum_header_button_back"
+                android:textColor="#FFFFFF"
+                android:textSize="15sp" />
+
+            <Button
+                android:id="@+id/check_albums_cancel_btn"
+                android:layout_width="45sp"
+                android:layout_height="30sp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="8dp"
+                android:background="@drawable/post_action_send_selector"
+                android:text="@string/upload_add_ablum_header_button_cancel"
+                android:textColor="#FFFFFF"
+                android:textSize="15sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_below="@id/upload_albums"
+            android:background="#FFFFFF">
+
+            <GridView
+                android:id="@+id/upload_albums_check_gridview"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:columnWidth="180dp"
+                android:gravity="center"
+                android:horizontalSpacing="5dp"
+                android:numColumns="2"
+                android:stretchMode="columnWidth"
+                android:verticalSpacing="5dp"></GridView>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/albums_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp"
+            android:background="@mipmap/camera_filter_bg">
+
+            <Button
+                android:id="@+id/btn_albums_filter_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/btn_camera_filter_back_selector" />
+
+            <Button
+                android:id="@+id/btn_albums_filter_choose"
+                android:layout_width="55dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/btn_style_five_selector"
+                android:padding="5dp"
+                android:text="@string/upload_addablum_btn_finish"
+                android:textColor="#FFFFFF" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/upload_folder_loading_rl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#70000000"
+        android:visibility="gone">
+
+        <ProgressBar
+            android:id="@+id/upload_folder_loading_icon"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:layout_marginLeft="3dp"
+            android:indeterminate="false"
+            android:indeterminateDrawable="@drawable/progress_drawable"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+
+</RelativeLayout>

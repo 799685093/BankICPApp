@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/upload_photo_check_fl"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- 头部布局 -->
+
+    <RelativeLayout
+        android:id="@+id/upload_photo_check_moretitlebar"
+        android:layout_width="fill_parent"
+        android:layout_height="44dip"
+        android:background="@mipmap/main_top_bg">
+
+        <Button
+            android:id="@+id/btn_camera_filter_back"
+            android:layout_width="70dip"
+            android:layout_height="fill_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:background="@null"
+            android:gravity="center"
+            android:text="取消"
+            android:textColor="@color/color_button"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/btn_camera_filter_choose"
+            android:layout_width="70dip"
+            android:layout_height="fill_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@null"
+            android:gravity="center"
+            android:text="完成"
+            android:textColor="@color/color_button"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/upload_photo_check_moretitlebar"
+        android:background="#FFFFFF">
+
+        <GridView
+            android:id="@+id/upload_ablum_check_gridview"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:columnWidth="90dip"
+            android:horizontalSpacing="5dp"
+            android:numColumns="auto_fit"
+            android:smoothScrollbar="false"
+            android:stretchMode="columnWidth"
+            android:verticalSpacing="5dp"></GridView>
+    </RelativeLayout>
+
+</RelativeLayout>

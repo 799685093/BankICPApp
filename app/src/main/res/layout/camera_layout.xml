@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="center">
+
+        <SurfaceView
+            android:id="@+id/mc_preview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/mc_shutter"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="5dp"
+                android:src="@drawable/shutter_selector" />
+
+            <ImageButton
+                android:id="@+id/ib_camera_flash"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="10dp"
+                android:layout_toLeftOf="@+id/ib_camera_change"
+                android:background="@drawable/camera_flash_auto"
+                android:visibility="visible" />
+
+            <ImageButton
+                android:id="@+id/ib_camera_change"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="10dp"
+                android:background="@drawable/camera_change" />
+
+            <ImageView
+                android:id="@+id/mc_albums_image"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="20dp"
+                android:visibility="gone" />
+
+            <com.bankicp.app.view.CompassView
+                android:id="@+id/compass_pointer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:src="@drawable/compass_cn"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/mc_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/compass_pointer"
+                android:layout_below="@+id/compass_pointer"
+                android:background="@color/half_transparent"
+                android:gravity="center"
+                android:padding="5dip"
+                android:textColor="@color/white"
+                android:textSize="18dip"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/ib_finish"
+                android:layout_width="70dip"
+                android:layout_height="60dip"
+                android:layout_alignBottom="@+id/mc_shutter"
+                android:layout_alignParentRight="true"
+                android:background="@null"
+                android:text="完成"
+                android:textColor="@color/color_button"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+    </FrameLayout>
+
+</RelativeLayout>

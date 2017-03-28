@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="68dip"
+    android:layout_height="fill_parent"
+    android:layout_alignParentLeft="true"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <LinearLayout style="@style/main_left_tab_style">
+
+        <TextView
+            style="@style/main_left_tab_tv_style"
+            android:text="待处理" />
+
+        <TextView
+            android:id="@+id/left_new_count"
+            style="@style/main_left_tab_tv_style"
+            android:text="0"
+            android:textColor="@color/red" />
+    </LinearLayout>
+
+    <LinearLayout style="@style/main_left_tab_style">
+
+        <TextView
+            style="@style/main_left_tab_tv_style"
+            android:text="待同步" />
+
+        <TextView
+            android:id="@+id/left_finished_count"
+            style="@style/main_left_tab_tv_style"
+            android:text="0"
+            android:textColor="@color/blue" />
+    </LinearLayout>
+
+    <LinearLayout style="@style/main_left_tab_style">
+
+        <TextView
+            style="@style/main_left_tab_tv_style"
+            android:text="待上报" />
+
+        <TextView
+            android:id="@+id/left_feedback_count"
+            style="@style/main_left_tab_tv_style"
+            android:text="0"
+            android:textColor="@color/red" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/left_feedback_btn"
+        android:layout_width="55dip"
+        android:layout_height="40dip"
+        android:layout_marginBottom="3dp"
+        android:background="@null"
+        android:padding="5dp"
+        android:text="反馈"
+        android:textColor="@color/red"
+        android:textSize="14sp" />
+
+</LinearLayout>

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main_content"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/activity_bg">
+
+    <LinearLayout
+        android:id="@+id/left_content"
+        android:layout_width="68dip"
+        android:layout_height="fill_parent"
+        android:layout_alignParentLeft="true"
+        android:background="@mipmap/main_top_bg"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="fill_parent"
+            android:layout_height="48dip"
+            android:gravity="center"
+            android:padding="10dip"
+            android:src="@mipmap/icon" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="3">
+
+            <include layout="@layout/main_left_menu" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="100dip"
+            android:layout_weight="1"
+            android:paddingTop="10dip">
+
+            <include layout="@layout/main_left_msg" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/top_content"
+        android:layout_width="fill_parent"
+        android:layout_height="48dip"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@id/left_content"
+        android:background="@mipmap/main_top_bg"
+        android:visibility="visible">
+
+        <TextView
+            android:id="@+id/top_app_name"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="8dip"
+            android:gravity="center_vertical"
+            android:text="@string/app_name"
+            android:textColor="@color/activity_title_text"
+            android:textSize="20dip" />
+
+        <TextView
+            android:id="@+id/top_line"
+            android:layout_width="1px"
+            android:layout_height="fill_parent"
+            android:layout_margin="6dip"
+            android:layout_toRightOf="@id/top_app_name"
+            android:background="@color/item_line"
+            android:gravity="center_vertical"
+            android:text="@string/app_name" />
+
+        <TextView
+            android:id="@+id/top_tab_name"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_margin="2dip"
+            android:layout_toRightOf="@id/top_line"
+            android:gravity="center_vertical"
+            android:text="@string/tab_home"
+            android:textColor="@color/activity_title_text"
+            android:textSize="14dip" />
+
+        <TextView
+            android:id="@+id/top_tab_room_name"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_margin="2dip"
+            android:layout_toRightOf="@id/top_tab_name"
+            android:gravity="center_vertical"
+            android:textColor="@color/activity_title_text"
+            android:textSize="11dip" />
+
+        <ImageView
+            android:id="@+id/top_user_icon"
+            android:layout_width="48dip"
+            android:layout_height="48dip"
+            android:layout_alignParentRight="true"
+            android:padding="10dip"
+            android:src="@mipmap/icon" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_toLeftOf="@id/top_user_icon"
+            android:gravity="right|center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/top_date_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dip"
+                android:gravity="center_vertical"
+                android:text="2015年05月03日  星期一  13:36"
+                android:textColor="@color/activity_title_text"
+                android:textSize="11dip" />
+
+            <TextView
+                android:id="@+id/top_user_org"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dip"
+                android:gravity="center_vertical"
+                android:text="国家开发银行-数据中心-怀柔灾备处-唐剑波"
+                android:textColor="@color/activity_title_text"
+                android:textSize="11dip" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/content"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/top_content"
+        android:layout_toRightOf="@id/left_content"
+        android:background="@color/activity_bg"
+        android:orientation="vertical" />
+
+</RelativeLayout>

@@ -1,0 +1,66 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/upload_ablum_folder_rl"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="50dp">
+
+    <FrameLayout
+        android:id="@+id/upload_ablum_folder_fm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clipToPadding="false">
+
+        <RelativeLayout
+            android:id="@+id/upload_ablum_folder_choose_rl"
+            android:layout_width="130dp"
+            android:layout_height="145dp"
+            android:background="@mipmap/albums_folder_bg">
+
+            <ImageView
+                android:id="@+id/upload_ablum_folder_choose"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="18dp"
+                android:adjustViewBounds="true"
+                android:background="@mipmap/albums_folder_default"
+                android:clickable="true"
+                android:clipToPadding="true"
+                android:scaleType="centerCrop" />
+
+            <TextView
+                android:id="@+id/upload_folder_position"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:visibility="invisible" />
+
+            <TextView
+                android:id="@+id/upload_ablum_folder_id"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/upload_ablum_folder_count"
+                android:layout_width="48dp"
+                android:layout_height="28dp"
+                android:layout_marginLeft="45dp"
+                android:layout_marginTop="105dp"
+                android:background="@mipmap/albums_folder_count_icon_bg"
+                android:gravity="center"
+                android:textSize="15sp" />
+        </RelativeLayout>
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/upload_ablum_folder_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/upload_ablum_folder_fm"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:lines="1"
+        android:textColor="#000000"
+        android:textSize="15sp" />
+
+</RelativeLayout>

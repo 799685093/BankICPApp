@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="44dip"
+    android:background="@mipmap/main_top_bg"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingLeft="8dip"
+    android:paddingRight="8dip">
+
+    <EditText
+        android:id="@+id/edit"
+        android:layout_width="fill_parent"
+        android:layout_height="44dip"
+        android:layout_weight="1"
+        android:background="@mipmap/imge_name_bg"
+        android:ems="10"
+        android:focusable="true"
+        android:hint="请输入..."
+        android:paddingLeft="8dip" />
+
+    <Button
+        android:id="@+id/btn_ok"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        android:background="@null"
+        android:gravity="center"
+        android:text="确定"
+        android:textColor="@color/color_button"
+        android:textSize="18sp" />
+
+</LinearLayout>

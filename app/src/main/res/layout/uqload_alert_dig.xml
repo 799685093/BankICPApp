@@ -1,0 +1,104 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dip"
+        android:background="@drawable/upload_dialog_bg"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/titile_lly"
+            android:layout_width="fill_parent"
+            android:layout_height="40dip"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/titile_ic"
+                android:layout_width="20dip"
+                android:layout_height="20dip"
+                android:src="@android:drawable/ic_dialog_info"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/titile_text"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dip"
+                android:layout_marginRight="10dip"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:maxLines="2"
+                android:minLines="3"
+                android:text="提示"
+                android:textColor="@color/activity_title_text"
+                android:textSize="18dip" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="1dip"
+                android:layout_margin="5dip"
+                android:background="@color/top_title_line"
+                android:gravity="center_vertical" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/contect_lly"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/contect_text"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dip"
+                android:layout_marginRight="10dip"
+                android:layout_weight="1"
+                android:gravity="top|center_horizontal"
+                android:minLines="2"
+                android:textColor="@color/activity_title_text"
+                android:textSize="18dip" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/btm_lly"
+            android:layout_width="fill_parent"
+            android:layout_height="44dip"
+            android:layout_marginBottom="10dip"
+            android:layout_marginTop="8dip"
+            android:background="@null"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_ok"
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:layout_marginLeft="15dip"
+                android:layout_marginRight="10dip"
+                android:layout_weight="1"
+                android:background="@drawable/btn_left_selector"
+                android:text="确定"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/btn_cancel"
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:layout_marginLeft="10dip"
+                android:layout_marginRight="15dip"
+                android:layout_weight="1"
+                android:background="@drawable/btn_right_selector"
+                android:text="取消"
+                android:visibility="gone" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

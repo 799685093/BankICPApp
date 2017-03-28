@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/infor_details"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/activity_bg">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- 头部布局 -->
+
+        <RelativeLayout
+            android:id="@id/moretitlebar"
+            android:layout_width="fill_parent"
+            android:layout_height="44dip"
+            android:background="@mipmap/main_top_bg">
+
+            <Button
+                android:id="@+id/header_close"
+                android:layout_width="60dip"
+                android:layout_height="fill_parent"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:background="@null"
+                android:gravity="center"
+                android:text="返回"
+                android:textColor="@color/color_button"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/usertitletext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="个人信息"
+                android:textColor="@color/activity_title_text"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/setting"
+                android:layout_width="60dip"
+                android:layout_height="fill_parent"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@null"
+                android:gravity="center"
+                android:text="注销"
+                android:textColor="@color/record_button_color"
+                android:textSize="18sp" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="20dip"
+            android:background="@color/list_item_in_line"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_marginBottom="1px"
+                android:background="@color/activity_bg"
+                android:orientation="horizontal" />
+        </LinearLayout>
+        <!-- 1 -->
+
+        <RelativeLayout
+            android:id="@+id/info_name_rl_top"
+            android:layout_width="fill_parent"
+            android:layout_height="50dip"
+            android:background="@drawable/info_single_selector"
+            android:gravity="center_vertical"
+            android:textSize="15sp">
+
+            <TextView
+                android:id="@+id/info_name_btn1_top"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="18dip"
+                android:text="@string/info_name"
+                android:textColor="@color/info_text"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/info_name_tv1_top"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/info_name_btn1_top"
+                android:textColor="@color/activity_title_text"
+                android:textSize="15sp" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="1px"
+            android:background="@color/list_item_in_line"
+            android:orientation="horizontal" />
+
+        <!-- 2 -->
+
+        <RelativeLayout
+            android:id="@+id/info_account_rl_top"
+            android:layout_width="fill_parent"
+            android:layout_height="50dip"
+            android:background="@drawable/info_single_selector"
+            android:textSize="15sp">
+
+            <TextView
+                android:id="@+id/info_account_btn1_top"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="18dip"
+                android:text="@string/info_account"
+                android:textColor="@color/info_text"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/info_account_tv1_top"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/info_account_btn1_top"
+                android:textColor="@color/activity_title_text"
+                android:textSize="15sp" />
+
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="1px"
+            android:background="@color/list_item_in_line"
+            android:orientation="horizontal" />
+
+        <!-- 3 -->
+
+        <RelativeLayout
+            android:id="@+id/info_sex_rl_top"
+            android:layout_width="fill_parent"
+            android:layout_height="50dip"
+            android:background="@drawable/info_single_selector"
+            android:textSize="15sp">
+
+            <TextView
+                android:id="@+id/info_sex_btn1_top"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="18dip"
+                android:text="@string/info_sex"
+                android:textColor="@color/info_text"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/info_sex_tv1_top"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/info_sex_btn1_top"
+                android:textColor="@color/activity_title_text"
+                android:textSize="15sp" />
+
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="20dip"
+            android:background="@color/list_item_in_line"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_marginBottom="1px"
+                android:layout_marginTop="1px"
+                android:background="@color/activity_bg"
+                android:orientation="horizontal" />
+        </LinearLayout>
+        <!-- 1 -->
+
+        <RelativeLayout
+            android:id="@+id/info_company_rl_top"
+            android:layout_width="fill_parent"
+            android:layout_height="50dip"
+            android:background="@drawable/info_single_selector"
+            android:textSize="15sp">
+
+            <TextView
+                android:id="@+id/info_company_btn1_top"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="18dip"
+                android:text="@string/info_company"
+                android:textColor="@color/info_text"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/info_company_tv1_top"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/info_company_btn1_top"
+                android:textColor="@color/activity_title_text"
+                android:textSize="15sp" />
+
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="1px"
+            android:background="@color/list_item_in_line"
+            android:orientation="horizontal" />
+        <!-- 2 -->
+
+        <RelativeLayout
+            android:id="@+id/info_department_rl_top"
+            android:layout_width="fill_parent"
+            android:layout_height="50dip"
+            android:background="@drawable/info_single_selector"
+            android:textSize="15sp">
+
+            <TextView
+                android:id="@+id/info_department_btn1_top"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="18dip"
+                android:text="@string/info_department"
+                android:textColor="@color/info_text"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/info_department_tv1_top"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/info_department_btn1_top"
+                android:textColor="@color/activity_title_text"
+                android:textSize="15sp" />
+
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="1px"
+            android:background="@color/list_item_in_line"
+            android:orientation="horizontal" />
+
+        <!-- 3 -->
+
+        <RelativeLayout
+            android:id="@+id/info_contract_rl_top"
+            android:layout_width="fill_parent"
+            android:layout_height="50dip"
+            android:background="@drawable/info_single_selector"
+            android:textSize="15sp">
+
+            <TextView
+                android:id="@+id/info_contract_btn1_top"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="18dip"
+                android:text="@string/info_contract"
+                android:textColor="@color/info_text"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/info_contract_tv1_top"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/info_contract_btn1_top"
+                android:textColor="@color/activity_title_text"
+                android:textSize="15sp" />
+
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="20dip"
+            android:background="@color/list_item_in_line"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_marginBottom="1px"
+                android:layout_marginTop="1px"
+                android:background="@color/activity_bg"
+                android:orientation="horizontal" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/info_createtime_rl_top"
+            android:layout_width="fill_parent"
+            android:layout_height="50dip"
+            android:background="@drawable/info_single_selector"
+            android:textSize="15sp">
+
+            <TextView
+                android:id="@+id/info_createtime_btn1_top"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="18dip"
+                android:text="@string/info_createtime"
+                android:textColor="@color/info_text"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/info_createtime_tv1_top"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/info_createtime_btn1_top"
+                android:textColor="@color/list_item_map_text"
+                android:textSize="15sp" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="20dip"
+            android:background="@color/list_item_in_line"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_marginBottom="1px"
+                android:layout_marginTop="1px"
+                android:background="@color/activity_bg"
+                android:orientation="horizontal"/>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/set_pwd"
+            android:layout_width="fill_parent"
+            android:layout_height="50dip"
+            android:background="@drawable/info_single_selector"
+            android:textSize="15sp">
+
+            <TextView
+                android:id="@+id/set_pwd_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="18dip"
+                android:text="修改密码"
+                android:textColor="@color/red"
+                android:textSize="18sp" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="1px"
+            android:background="@color/list_item_in_line"
+            android:orientation="horizontal" />
+    </LinearLayout>
+
+</ScrollView>

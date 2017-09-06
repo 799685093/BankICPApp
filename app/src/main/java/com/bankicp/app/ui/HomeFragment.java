@@ -1,6 +1,5 @@
 package com.bankicp.app.ui;
 
-import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -53,9 +52,6 @@ import java.util.Set;
 public class HomeFragment extends BaseFragment {
 
     public static Map<Integer, Map> mMap = new HashMap<>();
-
-    public static final int TIME_GROUP_TASK = 1;
-    public static final int ROOM_LIST_TASK = 2;
     public static final int INDEX = 0;
     private List<RoomInfo> currentRoomList = new ArrayList<>();
     /***
@@ -336,7 +332,6 @@ public class HomeFragment extends BaseFragment {
             if (showProgressDialog) {
                 try {
                     progressBar.setVisibility(View.VISIBLE);
-                    //                    showLoading();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -347,7 +342,6 @@ public class HomeFragment extends BaseFragment {
         protected void onPostExecute(String result) {
             if (showProgressDialog) {
                 progressBar.setVisibility(View.GONE);
-                //                dismissLoading();
             }
             if (!TextUtils.isEmpty(result)) {
 
@@ -362,11 +356,6 @@ public class HomeFragment extends BaseFragment {
         @Override
         protected void onProgressUpdate(Integer... progress) {
 
-            if (showProgressDialog) {
-                if (progress_text != null) {
-                    progress_text.setText(String.valueOf(progress[0] + "%"));
-                }
-            }
         }
 
         @Override
@@ -422,27 +411,6 @@ public class HomeFragment extends BaseFragment {
         }
     }
 
-    private Dialog dialog;
-    private TextView progress_text;
-
-    //    private void showLoading() {
-    //        try {
-    //            dialog = AlertUtils.showLoading(mContext);
-    //            progress_text = (TextView) dialog.findViewById(R.id.progress_text);
-    //            dialog.show();
-    //        } catch (Exception e) {
-    //            e.printStackTrace();
-    //        }
-    //    }
-    //
-    //    private void dismissLoading() {
-    //
-    //        if (dialog != null) {
-    //            dialog.dismiss();
-    //            dialog = null;
-    //        }
-    //    }
-
     /***
      * 获取时间段列表数据
      */
@@ -450,32 +418,11 @@ public class HomeFragment extends BaseFragment {
     private void getTimeGroup() {
         progressBar.setVisibility(View.VISIBLE);
 
-        //        new GetTimeGroupTask().start();
         ThreadManager.getThreadPool().execute(new Runnable() {
             @Override
             public void run() {
                 List<TimeGroupInfo> list = getTimeGroupList();
 
-                //                //                    dismissLoading();
-                //
-                //                groupList.clear();
-                //                if (msg.obj != null) {
-                //                    try {
-                //                        ArrayList<TimeGroupInfo> list = (ArrayList<TimeGroupInfo>) msg.obj;
-                //                        if (list.size() > 0) {
-                //                            groupList.addAll(list);
-                //                        } else {
-                //                            ToastUtils.showToast(mContext, "数据为空", 0);
-                //                        }
-                //                    } catch (Exception e) {
-                //                        e.printStackTrace();
-                //                    }
-                //                } else {
-                //                    ToastUtils.showToast(mContext, "数据为空", 0);
-                //                }
-                //
-                //                adapter.notifyDataSetChanged();
-                //                initCount();
                 groupList.clear();
                 if (list.size() > 0) {
                     groupList.addAll(list);
@@ -499,17 +446,6 @@ public class HomeFragment extends BaseFragment {
         });
     }
 
-    //    private class GetTimeGroupTask extends Thread {
-    //
-    //        @Override
-    //        public void run() {
-    //            List<TimeGroupInfo> list = getTimeGroupList();
-    //            Message msg = new Message();
-    //            msg.obj = list;
-    //            msg.what = TIME_GROUP_TASK;
-    //            mHandler.sendMessage(msg);
-    //        }
-    //    }
 
     /***
      * 获取主页单一时间段的机房列表数据
@@ -517,34 +453,15 @@ public class HomeFragment extends BaseFragment {
 
     private void getRoomData(final Long taskTimeId) {
         progressBar.setVisibility(View.VISIBLE);
-        //        new GetRoomTask(taskTimeId).start();
         ThreadManager.getThreadPool().execute(new Runnable() {
             @Override
             public void run() {
-                //                GetRoomTask(taskTimeId);
                 getRoomList(taskTimeId);
             }
         });
 
-        //        showLoading();
     }
 
-    //    private class GetRoomTask extends Thread {
-    //        Long taskTimeId;
-    //
-    //        public GetRoomTask(Long taskTimeId) {
-    //            this.taskTimeId = taskTimeId;
-    //        }
-    //
-    //        @Override
-    //        public void run() {
-    //            getRoomList(taskTimeId);
-    //        }
-    //
-    //    }
-    //    private void GetRoomTask(Long taskTimeId){
-    //        getRoomList(taskTimeId);
-    //    }
 
     /**
      * 获取子项数据
@@ -594,15 +511,10 @@ public class HomeFragment extends BaseFragment {
                     }
                     final List<RoomInfo> list2 = new ArrayList<>();
                     list2.addAll(list);
-                    //            new Thread() {
-                    //                @Override
-                    //                public void run() {
                     for (RoomInfo info : list2) {
                         dataHelper.deleteByRoomId(info.getId() + "");
                         dataHelper.saveTaskList(info.getTaskList());
                     }
-                    //                }
-                    //            }.start();
 
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -617,7 +529,7 @@ public class HomeFragment extends BaseFragment {
             return Collections.EMPTY_LIST;
         try {
             JSONArray tasks = new JSONArray(json);
-            if (tasks == null || tasks.length() == 0) {
+            if (tasks.length() == 0) {
                 return Collections.EMPTY_LIST;
             }
             List<TimeGroupInfo> groups = JsonUtil.jsonToList(json, TimeGroupInfo.class);
@@ -675,8 +587,6 @@ public class HomeFragment extends BaseFragment {
                     return;
                 }
                 currentRoomList.addAll(group.getRoomList());
-                //        if (currentRoomList == null)
-                //            return;
 
                 final int areaCount = currentRoomList.size();
                 String type = "";
@@ -792,35 +702,13 @@ public class HomeFragment extends BaseFragment {
             }
 
             if (groupList.get(position).getRoomList().size() == 0) {
-                //                        || groupList.get(position).getRoomList().size() == 0)) {
-                //子项没数据走这里
-                //                ToastUtils.showToast(mContext, "还没有数据", 0);
+
                 getRoomData(groupList.get(position).getId());
-                //                Log.i("tag","还没有数据");
 
             } else if (groupList.get(position).getRoomList().size() > 0) {
                 //子项有数据走这里
                 loadHomeTaskInfo(groupList.get(position));
-                //                ToastUtils.showToast(mContext, "这里有数据了", 0);
-                //                Log.i("tag","有数据");
             }
-
-            //            for (int i = 0, count = expandableListView.getCount(); i < count; i++) {
-            //                if (i == position)
-            //                    continue;
-            //                expandableListView.collapseGroup(i);
-            //            }
-
-
-            //                if (groupList.get(position) != null && (groupList.get(position).getRoomList() == null
-            //                        || groupList.get(position).getRoomList().size() == 0)) {
-            //
-            //                    getRoomData(groupList.get(position).getId());
-            //
-            //                } else {
-            //                    loadHomeTaskInfo(groupList.get(position));
-            //                }
-
             return true;
         }
     };

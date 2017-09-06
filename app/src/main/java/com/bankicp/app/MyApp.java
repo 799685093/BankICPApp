@@ -1,6 +1,7 @@
 package com.bankicp.app;
 
 import android.app.ActivityManager;
+import android.app.Application;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -12,11 +13,9 @@ import android.os.Build;
 import android.os.Handler;
 import android.os.StrictMode;
 
-import com.baidu.frontia.FrontiaApplication;
 import com.bankicp.app.model.FileInfo;
 import com.bankicp.app.model.URLs;
 import com.bankicp.app.model.UserInfo;
-import com.bankicp.app.service.BaiduPush;
 import com.bankicp.app.utils.CyptoUtils;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -31,7 +30,7 @@ import java.util.Map;
 import acra.CrashReport;
 import acra.ErrorReporter;
 
-public class MyApp extends FrontiaApplication {
+public class MyApp extends Application {
     private static final String FILE = "config_" + URLs.ENTERPRISE;
     public String path;
     public boolean onCancellation = false;
@@ -44,7 +43,6 @@ public class MyApp extends FrontiaApplication {
     private Uri captureUri;
     // 选择图片时列表位置
     private int choosePosition;
-    private BaiduPush mBaiduPushServer;
     private NotificationManager mNotificationManager;
     private long roomId;
 
@@ -116,14 +114,6 @@ public class MyApp extends FrontiaApplication {
             mNotificationManager = (NotificationManager) getSystemService(android.content.Context.NOTIFICATION_SERVICE);
         return mNotificationManager;
     }
-
-    public synchronized BaiduPush getBaiduPush() {
-        if (mBaiduPushServer == null)
-            mBaiduPushServer = new BaiduPush(BaiduPush.HTTP_METHOD_POST,
-                    Constants.SECRIT_KEY, Constants.API_KEY);
-        return mBaiduPushServer;
-    }
-
 
     /**
      * 获取Preference设置

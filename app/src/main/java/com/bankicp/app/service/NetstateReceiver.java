@@ -1,22 +1,5 @@
 package com.bankicp.app.service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-
-import com.bankicp.app.MyApp;
-import com.bankicp.app.db.DataHelper;
-import com.bankicp.app.model.Result;
-import com.bankicp.app.model.TaskInfo;
-import com.bankicp.app.model.URLs;
-import com.bankicp.app.model.UserInfo;
-import com.bankicp.app.utils.HttpService;
-import com.bankicp.app.utils.JsonUtil;
-import com.bankicp.app.utils.LogUtil;
-import com.bankicp.app.utils.Util;
-import com.bankicp.app.utils.HttpMultipartPost.HttpConnectionCallback;
-import com.bankicp.app.utils.HttpService.ProgressCallback;
-
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -25,6 +8,23 @@ import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Handler;
 import android.widget.TextView;
+
+import com.bankicp.app.MyApp;
+import com.bankicp.app.db.DataHelper;
+import com.bankicp.app.model.Result;
+import com.bankicp.app.model.TaskInfo;
+import com.bankicp.app.model.URLs;
+import com.bankicp.app.model.UserInfo;
+import com.bankicp.app.utils.HttpMultipartPost.HttpConnectionCallback;
+import com.bankicp.app.utils.HttpService;
+import com.bankicp.app.utils.HttpService.ProgressCallback;
+import com.bankicp.app.utils.JsonUtil;
+import com.bankicp.app.utils.LogUtil;
+import com.bankicp.app.utils.Util;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class NetstateReceiver extends BroadcastReceiver {
     public static String TAG = "NetstateReceiver";

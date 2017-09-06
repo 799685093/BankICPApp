@@ -1,9 +1,11 @@
 package com.bankicp.app.adapter;
 
 import android.annotation.SuppressLint;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -30,7 +32,6 @@ import com.bankicp.app.ui.InspectionFragment;
 import com.bankicp.app.utils.AlertUtils;
 import com.bankicp.app.utils.AlertUtils.OnAlertSelectId;
 import com.bankicp.app.utils.MediaUtils;
-import com.bankicp.app.utils.ToastUtils;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
@@ -107,7 +108,7 @@ public class CreateTaskGridViewAdapter extends BaseAdapter {
                 }
             });
             holder.imgDelete.setVisibility(View.GONE);
-            holder.tv.setVisibility(View.GONE);
+            holder.tv.setVisibility(View.VISIBLE);
             holder.type.setVisibility(View.GONE);
 
             holder.iv.setImageResource(R.mipmap.icon_addpic);
@@ -149,8 +150,7 @@ public class CreateTaskGridViewAdapter extends BaseAdapter {
                     } else {
                         newimageUrl = "file://" + info.getPath();
                     }
-                    ImageLoader.getInstance().displayImage(newimageUrl,
-                            holder.iv, options);
+                    ImageLoader.getInstance().displayImage(newimageUrl, holder.iv, options);
 
                 } catch (Exception e) {
                     holder.iv.setImageResource(R.mipmap.wait);
@@ -187,7 +187,8 @@ public class CreateTaskGridViewAdapter extends BaseAdapter {
         // 判断是否挂载了SD卡
         String storageState = Environment.getExternalStorageState();
         if (storageState.equals(Environment.MEDIA_MOUNTED)) {
-            savePath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/BankICP/";// 存放照片的文件夹
+            // 存放照片的文件夹
+            savePath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/BankICP/";
 
             File savedir = new File(savePath);
             if (!savedir.exists()) {
@@ -197,27 +198,37 @@ public class CreateTaskGridViewAdapter extends BaseAdapter {
 
         // 没有挂载SD卡，无法保存文件
         if (TextUtils.isEmpty(savePath)) {
-            ToastUtils.showToast(mContext, "无法保存照片，请检查SD卡是否挂载", Toast.LENGTH_SHORT);
+            Toast.makeText(mContext, "无法保存照片，请检查SD卡是否挂载", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        String timeStamp = new SimpleDateFormat("yyyyMMddHHmmss")
-                .format(new Date());
+        String timeStamp = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
         String fileName = timeStamp + ".jpg";// 照片命名
-        File out = new File(savePath, fileName);
-        Uri uri = Uri.fromFile(out);
+        File outputImage = new File(savePath, fileName);
 
-        String theLarge = savePath + fileName;// 该照片的绝对路径
-        app.setCapturePath(theLarge);
+
+        String photoPath = savePath + fileName;// 该照片的绝对路径
+        app.setCapturePath(photoPath);
 
         FileInfo fileInfo = new FileInfo();
-        fileInfo.setPath(theLarge);
+        fileInfo.setPath(photoPath);
         app.getChooseImages().clear();
         app.getChooseImages().add(fileInfo);
-        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
-        fm.startActivityForResult(intent, Constants.PIC_REQUEST_CODE);
 
+        Uri imageUri;
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            //如果是7.0android系统
+            ContentValues contentValues = new ContentValues(1);
+            contentValues.put(MediaStore.Images.Media.DATA, outputImage.getAbsolutePath());
+            imageUri = mContext.getContentResolver()
+                    .insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues);
+
+        } else {
+            imageUri = Uri.fromFile(outputImage);
+        }
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+        fm.startActivityForResult(intent, Constants.PIC_REQUEST_CODE);
     }
 
     /***

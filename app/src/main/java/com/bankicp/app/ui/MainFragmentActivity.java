@@ -1,14 +1,13 @@
 package com.bankicp.app.ui;
 
 import android.Manifest;
-import android.annotation.TargetApi;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
-import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -22,8 +21,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.baidu.android.pushservice.PushConstants;
-import com.baidu.android.pushservice.PushManager;
 import com.bankicp.app.AppManager;
 import com.bankicp.app.Constants;
 import com.bankicp.app.MyApp;
@@ -47,7 +44,6 @@ import java.util.List;
  */
 public class MainFragmentActivity extends FragmentActivity {
 
-    private View main_left_menu;
 
     private ImageView home_icon;
     private ImageView patrol_icon;
@@ -73,7 +69,6 @@ public class MainFragmentActivity extends FragmentActivity {
     private List<Class> clazzList = new ArrayList<>();
     private Fragment currentFragment;
     private int currentIndex;
-    private int new_count;
 
     private MyApp app;
 
@@ -92,7 +87,6 @@ public class MainFragmentActivity extends FragmentActivity {
         initDefaultValue();
         findTabView();
         initFragment(currentIndex, null);
-        initWithApiKey();
 
         try {
             IntentFilter intentFilter = new IntentFilter();
@@ -105,12 +99,6 @@ public class MainFragmentActivity extends FragmentActivity {
         getPermission();
     }
 
-    // 以apikey的方式绑定
-    private void initWithApiKey() {
-        // Push: 无账号初始化，用api key绑定
-        PushManager.startWork(getApplicationContext(), PushConstants.LOGIN_TYPE_API_KEY,
-                Util.getMetaValue(this, "api_key"));
-    }
 
     private void initView() {
         top_tab_name = $(R.id.top_tab_name);
@@ -226,7 +214,6 @@ public class MainFragmentActivity extends FragmentActivity {
      */
     private void findTabView() {
 
-        main_left_menu = $(R.id.main_left_menu);
         home_icon = $(R.id.home_icon);
         patrol_icon = $(R.id.patrol_icon);
         inspection_icon = $(R.id.inspection_icon);
@@ -466,65 +453,50 @@ public class MainFragmentActivity extends FragmentActivity {
         return (T) super.findViewById(resId);
     }
 
-    private final int SDK_PERMISSION_REQUEST = 127;
+    private static final int REQUEST_CODE = 1;
 
-    @TargetApi(23)
     private void getPermission() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            ArrayList<String> permissions = new ArrayList<>();
-            /***
-             * 定位权限为必须权限，用户如果禁止，则每次进入都会申请
-             */
-            // 定位精确位置
-            if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION)
-                    != PackageManager.PERMISSION_GRANTED) {
-                permissions.add(Manifest.permission.ACCESS_FINE_LOCATION);
-            }
-            if (checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION)
-                    != PackageManager.PERMISSION_GRANTED) {
-                permissions.add(Manifest.permission.ACCESS_COARSE_LOCATION);
-            }
-            /*
-             * 读写权限和电话状态权限非必要权限(建议授予)只会申请一次，用户同意或者禁止，只会弹一次
-			 */
-            // 读写权限
-            addPermission(permissions, Manifest.permission.WRITE_EXTERNAL_STORAGE);
-            // 读取电话状态权限
-            addPermission(permissions, Manifest.permission.READ_PHONE_STATE);
-            //相机
-            addPermission(permissions, Manifest.permission.CAMERA);
-            //相机
-            addPermission(permissions, Manifest.permission.CAMERA);
-            //录音
-            addPermission(permissions, Manifest.permission.RECORD_AUDIO);
-
-            if (permissions.size() > 0) {
-                requestPermissions(permissions.toArray(new String[permissions.size()]), SDK_PERMISSION_REQUEST);
-            }
+        List<String> permissionList = new ArrayList<>();
+        if (ContextCompat.checkSelfPermission(MainFragmentActivity.this,
+                Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            permissionList.add(Manifest.permission.ACCESS_FINE_LOCATION);
+        }
+        if (ContextCompat.checkSelfPermission(MainFragmentActivity.this,
+                Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            permissionList.add(Manifest.permission.ACCESS_COARSE_LOCATION);
+        }
+        if (ContextCompat.checkSelfPermission(MainFragmentActivity.this,
+                Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+            permissionList.add(Manifest.permission.CAMERA);
+        }
+        if (ContextCompat.checkSelfPermission(MainFragmentActivity.this,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            permissionList.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        }
+        if (!permissionList.isEmpty()) {
+            String[] permissions = permissionList.toArray(new String[permissionList.size()]);
+            ActivityCompat.requestPermissions(MainFragmentActivity.this, permissions, REQUEST_CODE);
         }
     }
 
-    @TargetApi(23)
-    private boolean addPermission(ArrayList<String> permissionsList, String permission) {
-        // 如果应用没有获得对应权限,则添加到列表中,准备批量申请
-        if (checkSelfPermission(permission) != PackageManager.PERMISSION_GRANTED) {
-            if (shouldShowRequestPermissionRationale(permission)) {
-                return true;
-            } else {
-                permissionsList.add(permission);
-                return false;
-            }
-
-        } else {
-            return true;
-        }
-    }
-
-    @TargetApi(23)
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-        // TODO Auto-generated method stub
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode) {
+            case REQUEST_CODE:
+                if (grantResults.length > 0) {
+                    for (int result : grantResults) {
+                        if (result != PackageManager.PERMISSION_GRANTED) {
+                            Toast.makeText(MainFragmentActivity.this, "必须同意所有权限才可以使用app", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                    }
+                } else {
+                    Toast.makeText(MainFragmentActivity.this, "必须同意所有权限才可以使用app", Toast.LENGTH_SHORT).show();
+                }
+                break;
+
+            default:
+        }
 
     }
 }
